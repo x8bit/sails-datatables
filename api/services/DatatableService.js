@@ -29,6 +29,7 @@ module.exports.getData = function (model, options) {
         columns: _columns,
         start: 0,
         length: 10,
+        where: '',
         search: {
             value: '',
             regex: false
@@ -56,6 +57,11 @@ module.exports.getData = function (model, options) {
 
     //build where criteria
     var where = [], whereQuery = {}, select = [];
+
+    if (_options.where) {
+        whereQuery["and"] = [JSON.parse(_options.where)];
+    }
+    
 
     if (_.isArray(_options.columns)) {
         _options.columns.forEach(function (column, index) {
