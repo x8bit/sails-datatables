@@ -59,7 +59,7 @@ module.exports.getData = function (model, options) {
     var where = [], whereQuery = {}, select = [];
 
     if (_options.where) {
-        whereQuery["and"] = [JSON.parse(_options.where)];
+        whereQuery = JSON.parse(_options.where);
     }
     
 
